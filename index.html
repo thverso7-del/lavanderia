@@ -8,15 +8,58 @@
 body{
 font-family: Arial;
 text-align:center;
-background:#f2f2f2;
+background: linear-gradient(135deg,#4facfe,#00f2fe);
+margin:0;
+padding:0;
+}
+
+h1{
+font-size:50px;
+color:white;
+margin-top:40px;
+}
+
+.subtitulo{
+font-size:20px;
+color:white;
+margin-bottom:30px;
 }
 
 .caixa{
 background:white;
-margin:20px;
+width:300px;
+margin:auto;
 padding:20px;
-border-radius:10px;
-box-shadow:0px 0px 10px gray;
+border-radius:15px;
+box-shadow:0px 5px 15px rgba(0,0,0,0.2);
+}
+
+h2{
+font-size:28px;
+}
+
+.status{
+font-size:22px;
+margin:15px;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+border:none;
+border-radius:8px;
+margin:5px;
+cursor:pointer;
+}
+
+.lavar{
+background:#ff6b6b;
+color:white;
+}
+
+.livre{
+background:#2ecc71;
+color:white;
 }
 
 </style>
@@ -27,15 +70,17 @@ box-shadow:0px 0px 10px gray;
 
 <h1>Lavanderia Compartilhada</h1>
 
+<p class="subtitulo">Sistema de controle das lavadoras</p>
+
 <div class="caixa">
 
 <h2>Lavadora 1</h2>
 
-<p id="maq1">🟢 Livre</p>
+<p id="maq1" class="status">🟢 Livre</p>
 
-<button onclick="lavando()">Começar lavagem</button>
+<button class="lavar" onclick="lavando()">Começar lavagem</button>
 
-<button onclick="livre()">Terminou</button>
+<button class="livre" onclick="livre()">Terminou</button>
 
 </div>
 
@@ -52,4 +97,4 @@ document.getElementById("maq1").innerHTML="🟢 Livre";
 </script>
 
 </body>
-  </html>
+</html>
