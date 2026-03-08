@@ -1,95 +1,150 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Lavanderia Compartilhada</title>
+<meta charset="UTF-8">
+<title>Lavanderia</title>
 
 <style>
 
 body{
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#1e3c72,#2a5298);
-  margin:0;
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  color:white;
+font-family:Arial;
+background:#1f84c6;
+text-align:center;
+color:white;
 }
 
 h1{
-  font-size:40px;
-  margin-bottom:5px;
+font-size:80px;
+margin-top:20px;
 }
 
-.subtitulo{
-  font-size:18px;
-  margin-bottom:40px;
+.container{
+display:flex;
+justify-content:center;
+gap:60px;
+margin-top:40px;
+flex-wrap:wrap;
 }
 
-.caixa{
-  background:white;
-  width:300px;
-  padding:30px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 10px 25px rgba(0,0,0,0.2);
-  color:#333;
+.maquina{
+text-align:center;
+}
+
+.maquina img{
+width:220px;
 }
 
 .status{
-  font-size:20px;
-  margin:20px 0;
+font-size:22px;
+margin-bottom:10px;
 }
 
 button{
-  padding:12px 20px;
-  font-size:15px;
-  border:none;
-  border-radius:25px;
-  margin:5px;
-  cursor:pointer;
+padding:10px 20px;
+border:none;
+border-radius:10px;
+margin:5px;
+font-size:16px;
+cursor:pointer;
 }
 
 .lavar{
-  background:#ff5e5e;
-  color:white;
+background:#ff5b5b;
+color:white;
 }
 
-.livre{
-  background:#2ecc71;
-  color:white;
+.parar{
+background:#2ecc71;
+color:white;
 }
+
 </style>
-
 </head>
 
 <body>
 
-<h1>Lavanderia Compartilhada</h1>
+<h1>Lavadoras</h1>
 
-<p class="subtitulo">Sistema de controle das lavadoras</p>
+<div class="container">
 
-<div class="caixa">
+<div class="maquina">
+<div class="status" id="lav1">🟢 Livre</div>
+<img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png">
+<br>
+<button class="lavar" onclick="iniciar('lav1',33)">Iniciar</button>
+</div>
 
-<h2>Lavadora 1</h2>
+<div class="maquina">
+<div class="status" id="lav2">🟢 Livre</div>
+<img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png">
+<br>
+<button class="lavar" onclick="iniciar('lav2',33)">Iniciar</button>
+</div>
 
-<p id="maq1" class="status">🟢 Livre</p>
+<div class="maquina">
+<div class="status" id="lav3">🟢 Livre</div>
+<img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png">
+<br>
+<button class="lavar" onclick="iniciar('lav3',33)">Iniciar</button>
+</div>
 
-<button class="lavar" onclick="lavando()">Começar lavagem</button>
+</div>
 
-<button class="livre" onclick="livre()">Terminou</button>
+
+<h1>Secadoras</h1>
+
+<div class="container">
+
+<div class="maquina">
+<div class="status" id="sec1">🟢 Livre</div>
+<img src="https://cdn-icons-png.flaticon.com/512/1046/1046872.png">
+<br>
+<button class="lavar" onclick="iniciar('sec1',40)">Iniciar</button>
+</div>
+
+<div class="maquina">
+<div class="status" id="sec2">🟢 Livre</div>
+<img src="https://cdn-icons-png.flaticon.com/512/1046/1046872.png">
+<br>
+<button class="lavar" onclick="iniciar('sec2',40)">Iniciar</button>
+</div>
+
+<div class="maquina">
+<div class="status" id="sec3">🟢 Livre</div>
+<img src="https://cdn-icons-png.flaticon.com/512/1046/1046872.png">
+<br>
+<button class="lavar" onclick="iniciar('sec3',40)">Iniciar</button>
+</div>
 
 </div>
 
 <script>
 
-function lavando(){
-document.getElementById("maq1").innerHTML="🔴 Lavando";
+function iniciar(id, minutos){
+
+let tempo = minutos * 60
+
+let intervalo = setInterval(function(){
+
+let m = Math.floor(tempo/60)
+let s = tempo%60
+
+document.getElementById(id).innerHTML =
+"🔴 Ocupada - "+m+"m "+s+"s"
+
+tempo--
+
+if(tempo < 0){
+
+clearInterval(intervalo)
+
+document.getElementById(id).innerHTML =
+"🟢 Livre"
+
 }
 
-function livre(){
-document.getElementById("maq1").innerHTML="🟢 Livre";
+},1000)
+
 }
 
 </script>
