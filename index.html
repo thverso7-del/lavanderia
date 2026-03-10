@@ -123,42 +123,40 @@ color:white;
 </div>
 
 <script>
+async function iniciar(id, minutos){
 
-function iniciar(id, minutos){
+let tempoFim = Date.now() + minutos * 60000
 
-let tempo = minutos * 60
-
-let intervalo = setInterval(function(){
-
-let m = Math.floor(tempo/60)
-let s = tempo%60
-
-document.getElementById(id).innerHTML =
-"🔴 Ocupada - "+m+"m "+s+"s"
-
-tempo--
-
-if(tempo < 0){
-
-clearInterval(intervalo)
-
-document.getElementById(id).innerHTML =
-"🟢 Livre"
+await supabase
+.from("maquinas")
+.update({
+status: "ocupado",
+tempo_fin: tempoFim
+})
+.eq("nome", id)
 
 }
-
-},1000)
-
-}
+</script>
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
 <script>
 const supabaseUrl = "https://fagjvpxjlwgnyzdsusmm.supabase.co"
 const supabaseKey = "sb_publishable_pAFXkmJb4hlNOCeADFVXWw_7_BHMDlk"
 
-const supabase = supabase.createClient(supabaseUrl, supabaseKey)
+ const supabase = supabase.createClient(supabaseUrl, supabaseKey)
+  <script>
+supabase
+.channel("tempo-maquinas")
+.on(
+"postgres_changes",
+{ event: "*", schema: "public", table: "maquinas" },
+(payload) => {
+location.reload()
+}
+)
+.subscribe()
+</script>
 </script>
 </body>
 </html>
