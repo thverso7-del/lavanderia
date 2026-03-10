@@ -144,8 +144,7 @@ tempo_fin: tempoFim
 const supabaseKey = "sb_publishable_pAFXkmJb4hlNOCeADFVXWw_7_BHMDlk"
 
  const supabase = supabase.createClient(supabaseUrl, supabaseKey)
-supabase
-.channel("tempo-maquinas")
+supabase.channel("tempo-maquinas")
 .on(
 "postgres_changes",
 { event: "*", schema: "public", table: "maquinas" },
