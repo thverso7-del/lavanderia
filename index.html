@@ -155,6 +155,50 @@ supabase
 location.reload()
 }
 )
+  async function carregarMaquinas(){
+
+let { data } = await supabase
+.from("maquinas")
+.select("*")
+
+data.forEach(m => {
+
+let elemento = document.getElementById(m.nome)
+
+if(m.status == "ocupado"){
+
+let tempoRestante = Math.floor((m.tempo_fin - Date.now())/1000)
+
+if(tempoRestante > 0){
+
+let intervalo = setInterval(()=>{
+
+let mnt = Math.floor(tempoRestante/60)
+let seg = tempoRestante%60
+
+elemento.innerHTML = "🔴 Ocupada - "+mnt+"m "+seg+"s"
+
+tempoRestante--
+
+if(tempoRestante <= 0){
+
+clearInterval(intervalo)
+
+elemento.innerHTML = "🟢 Livre"
+
+}
+
+},1000)
+
+}
+
+}
+
+})
+
+}
+
+carregarMaquinas()
 .subscribe()
 </script>
 </script>
