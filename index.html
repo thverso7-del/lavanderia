@@ -138,14 +138,12 @@ tempo_fin: tempoFim
 }
 </script>
 
-</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
-const supabaseUrl = "https://fagjvpxjlwgnyzdsusmm.supabase.co"
+ const supabaseUr = "https://fagjvpxjlwgnyzdsusmm.supabase.co"
 const supabaseKey = "sb_publishable_pAFXkmJb4hlNOCeADFVXWw_7_BHMDlk"
 
  const supabase = supabase.createClient(supabaseUrl, supabaseKey)
-  <script>
 supabase
 .channel("tempo-maquinas")
 .on(
