@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Máquinas</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#e8f2ff;
+text-align:center;
+}
+
+header{
+background:#0b3d91;
+color:white;
+padding:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+max-width:800px;
+margin:auto;
+margin-top:40px;
+}
+
+.maquina{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.maquina img{
+width:90px;
+}
+
+.botao{
+background:#1e90ff;
+color:white;
+border:none;
+padding:10px;
+margin-top:10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.timer{
+margin-top:10px;
+font-weight:bold;
+color:#0b3d91;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Escolha sua Máquina</h1>
+</header>
+
+<div class="grid">
+
+<div class="maquina">
+<img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png">
+<p>Máquina 1</p>
+<p>R$10</p>
+<button class="botao" onclick="lavar(this)">Iniciar lavagem</button>
+<div class="timer"></div>
+</div>
+
+<div class="maquina">
+<img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png">
+<p>Máquina 2</p>
+<p>R$10</p>
+<button class="botao" onclick="lavar(this)">Iniciar lavagem</button>
+<div class="timer"></div>
+</div>
+
+<div class="maquina">
+<img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png">
+<p>Máquina 3</p>
+<p>R$10</p>
+<button class="botao" onclick="lavar(this)">Iniciar lavagem</button>
+<div class="timer"></div>
+</div>
+
+<div class="maquina">
+<img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png">
+<p>Máquina 4</p>
+<p>R$10</p>
+<button class="botao" onclick="lavar(this)">Iniciar lavagem</button>
+<div class="timer"></div>
+</div>
+
+<div class="maquina">
+<img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png">
+<p>Máquina 5</p>
+<p>R$10</p>
+<button class="botao" onclick="lavar(this)">Iniciar lavagem</button>
+<div class="timer"></div>
+</div>
+
+<div class="maquina">
+<img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png">
+<p>Máquina 6</p>
+<p>R$10</p>
+<button class="botao" onclick="lavar(this)">Iniciar lavagem</button>
+<div class="timer"></div>
+</div>
+
+</div>
+
+<script>
+
+function lavar(botao){
+
+let tempo=30
+
+let timer=botao.nextElementSibling
+
+botao.disabled=true
+
+let cont=setInterval(function(){
+
+tempo--
+
+timer.innerText="Lavando... "+tempo+"s"
+
+if(tempo<=0){
+
+clearInterval(cont)
+
+timer.innerText="Lavagem concluída ✅"
+
+}
+
+},1000)
+
+}
+
+</script>
+
+</body>
+  </html>
