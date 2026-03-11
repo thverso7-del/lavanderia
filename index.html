@@ -137,7 +137,7 @@ tempo_fim:tempoFim
 .eq("nome",id)
 
 carregarMaquinas()
-
+location.reload()
   }
 
 async function carregarMaquinas(){
@@ -158,7 +158,7 @@ let tempoRestante = Math.floor((m.tempo_fim - Date.now())/1000)
 
 if(tempoRestante > 0){
 
-setInterval(()=>{
+let timer = setInterval(()=>{
 
 let mnt = Math.floor(tempoRestante/60)
 let seg = tempoRestante % 60
@@ -168,6 +168,7 @@ elemento.innerHTML = "🔴 Ocupada - " + mnt + "m " + seg + "s"
 tempoRestante--
 
 if(tempoRestante <= 0){
+  clearInterval(timer)
 elemento.innerHTML = "🟢 Livre"
 }
 
