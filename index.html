@@ -8,88 +8,41 @@
 <style>
 
 body{
-font-family: Arial;
+font-family:Arial;
 margin:0;
-background:#f0f0f0;
 text-align:center;
+background:#f2f2f2;
 }
 
 header{
 background:#0b3d91;
 color:white;
-padding:20px;
+padding:25px;
 }
 
 .logo{
-font-size:28px;
+font-size:30px;
 font-weight:bold;
-}
-
-nav{
-background:#1e90ff;
-padding:10px;
-}
-
-nav a{
-color:white;
-margin:10px;
-text-decoration:none;
-font-weight:bold;
-font-size:18px;
 }
 
 .hero{
-padding:60px;
-background:white;
+padding:80px;
+}
+
+.botao{
+background:#1e90ff;
+color:white;
+padding:15px 40px;
+font-size:20px;
+text-decoration:none;
+border-radius:8px;
 }
 
 .counter{
 background:#0b3d91;
 color:white;
 padding:40px;
-font-size:30px;
-}
-
-footer{
-background:#333;
-color:white;
-padding:15px;
-}
-
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25d366;
-color:white;
-padding:15px;
-border-radius:50%;
-font-size:20px;
-text-decoration:none;
-}
-
-/* TELA DAS MAQUINAS */
-
-#telaMaquinas{
-display:none;
-padding:50px;
-background:#e8f2ff;
-}
-
-.maquinas{
-display:grid;
-grid-template-columns: repeat(3,1fr);
-gap:30px;
-max-width:600px;
-margin:auto;
-}
-
-.maquina{
-font-size:70px;
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.2);
+font-size:28px;
 }
 
 </style>
@@ -98,66 +51,36 @@ box-shadow:0 0 10px rgba(0,0,0,0.2);
 <body>
 
 <header>
-<div class="logo">🧺 Lavanderia Limpa+</div>
-<p>Roupas limpas, cheirosas e bem cuidadas</p>
+<div class="logo">Lavanderia Limpa+</div>
+<p>Roupas limpas e cheirosas</p>
 </header>
 
-<nav>
-<a href="#" onclick="abrirTela()">INICIAR</a>
-</nav>
+<div class="hero">
+<h2>Bem-vindo</h2>
+<p>Use nossas máquinas automáticas</p>
 
-<section class="hero">
-<h2>Bem-vindo à Lavanderia Limpa+</h2>
-<p>Lavagem profissional com qualidade e rapidez.</p>
-</section>
+<br>
 
-<section class="counter">
-Clientes atendidos: <span id="contador">0</span>
-</section>
-
-<!-- TELA QUE ABRE -->
-
-<section id="telaMaquinas">
-
-<h2>Escolha sua Máquina</h2>
-
-<div class="maquinas">
-
-<div class="maquina">🧺</div>
-<div class="maquina">🧺</div>
-<div class="maquina">🧺</div>
-
-<div class="maquina">🧺</div>
-<div class="maquina">🧺</div>
-<div class="maquina">🧺</div>
+<a class="botao" href="maquinas.html">INICIAR</a>
 
 </div>
 
-</section>
-
-<footer>
-<p>© 2026 Lavanderia Limpa+</p>
-</footer>
-
-<a class="whatsapp" href="https://wa.me/5591989123738">S</a>
+<div class="counter">
+Clientes atendidos: <span id="contador">0</span>
+</div>
 
 <script>
 
-let contador = 0;
+let contador=0;
 
 function aumentar(){
-contador++;
-document.getElementById("contador").innerText = contador;
+contador++
+document.getElementById("contador").innerText=contador
 }
 
-setInterval(aumentar,1000);
-
-function abrirTela(){
-document.getElementById("telaMaquinas").style.display="block";
-window.scrollTo(0,document.body.scrollHeight);
-}
+setInterval(aumentar,1000)
 
 </script>
 
 </body>
-  </html>
+</html>
