@@ -132,7 +132,7 @@ await supabase
 .from("maquinas")
 .update({
 status:"ocupado",
-tempo_fin:tempoFim
+tempo_fim:tempoFim
 })
 .eq("nome",id)
 
@@ -154,7 +154,7 @@ let elemento = document.getElementById(m.nome)
 
 if(m.status == "ocupado"){
 
-let tempoRestante = Math.floor((m.tempo_fin - Date.now())/1000)
+let tempoRestante = Math.floor((m.tempo_fim - Date.now())/1000)
 
 if(tempoRestante > 0){
 
