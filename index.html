@@ -1,61 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Lavanderia</title>
-
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lavanderia Limpa+</title>
 
 <style>
 
 body{
-font-family:Arial;
-background:#1f84c6;
+font-family: Arial, sans-serif;
+margin:0;
+background:#f0f0f0;
 text-align:center;
+}
+
+header{
+background:#0b3d91;
 color:white;
+padding:20px;
 }
 
-h1{
-font-size:60px;
-margin-top:20px;
+header h1{
+margin:0;
+font-size:32px;
 }
 
-.container{
-display:flex;
-justify-content:center;
-gap:60px;
-margin-top:40px;
-flex-wrap:wrap;
+nav{
+background:#1e90ff;
+padding:10px;
 }
 
-.maquina{
-text-align:center;
-display:flex;
-flex-direction:column;
-align-items:center;
-}
-
-.maquina img{
-width:200px;
-}
-
-.status{
-font-size:22px;
-margin-bottom:10px;
-}
-
-button{
-padding:10px 20px;
-border:none;
-border-radius:10px;
-margin:5px;
-font-size:16px;
-cursor:pointer;
-}
-
-.lavar{
-background:#ff5b5b;
+nav a{
 color:white;
+margin:10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.hero{
+padding:60px;
+background:white;
+}
+
+.hero h2{
+color:#0b3d91;
+}
+
+.services{
+background:#e8e8e8;
+padding:40px;
+}
+
+.service{
+margin:20px;
+}
+
+.counter{
+background:#0b3d91;
+color:white;
+padding:40px;
+font-size:30px;
+}
+
+footer{
+background:#333;
+color:white;
+padding:15px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25d366;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:20px;
+text-decoration:none;
 }
 
 </style>
@@ -63,125 +85,62 @@ color:white;
 
 <body>
 
-<h1>Lavadoras</h1>
+<header>
+<h1>Lavanderia Limpa+</h1>
+<p>Roupas limpas, cheirosas e bem cuidadas</p>
+</header>
 
-<div class="container">
+<nav>
+<a href="#">Início</a>
+<a href="#">Serviços</a>
+<a href="#">Contato</a>
+</nav>
 
-<div class="maquina">
-<div class="status" id="lav1">🟢 Livre</div>
-<img src="uma-maquina-de-lavar-isolada-em-fundo-branco_1308-61579.jpg">
-<br>
-<button class="lavar" onclick="iniciar('lav1',33)">Iniciar</button>
+<section class="hero">
+<h2>Bem-vindo à Lavanderia Limpa+</h2>
+<p>Lavagem profissional com qualidade e rapidez.</p>
+</section>
+
+<section class="services">
+<h2>Nossos Serviços</h2>
+
+<div class="service">
+<h3>Lavagem de roupas</h3>
+<p>Lavagem completa e cuidadosa.</p>
 </div>
 
-<div class="maquina">
-<div class="status" id="lav2">🟢 Livre</div>
-<img src="uma-maquina-de-lavar-isolada-em-fundo-branco_1308-61579.jpg">
-<br>
-<button class="lavar" onclick="iniciar('lav2',33)">Iniciar</button>
+<div class="service">
+<h3>Secagem</h3>
+<p>Roupas secas rapidamente.</p>
 </div>
 
-<div class="maquina">
-<div class="status" id="lav3">🟢 Livre</div>
-<img src="uma-maquina-de-lavar-isolada-em-fundo-branco_1308-61579.jpg">
-<br>
-<button class="lavar" onclick="iniciar('lav3',33)">Iniciar</button>
+<div class="service">
+<h3>Passadoria</h3>
+<p>Roupas bem passadas e organizadas.</p>
 </div>
 
-</div>
+</section>
 
-<h1>Secadoras</h1>
+<section class="counter">
+Clientes atendidos: <span id="contador">0</span>
+</section>
 
-<div class="container">
+<footer>
+<p>© 2026 Lavanderia Limpa+</p>
+</footer>
 
-<div class="maquina">
-<div class="status" id="sec1">🟢 Livre</div>
-<img src="uma-maquina-de-lavar-isolada-em-fundo-branco_1308-61579.jpg">
-<br>
-<button class="lavar" onclick="iniciar('sec1',40)">Iniciar</button>
-</div>
-
-<div class="maquina">
-<div class="status" id="sec2">🟢 Livre</div>
-<img src="uma-maquina-de-lavar-isolada-em-fundo-branco_1308-61579.jpg">
-<br>
-<button class="lavar" onclick="iniciar('sec2',40)">Iniciar</button>
-</div>
-
-<div class="maquina">
-<div class="status" id="sec3">🟢 Livre</div>
-<img src="uma-maquina-de-lavar-isolada-em-fundo-branco_1308-61579.jpg">
-<br>
-<button class="lavar" onclick="iniciar('sec3',40)">Iniciar</button>
-</div>
-
-</div>
+<a class="whatsapp" href="https://wa.me/5591999999999">W</a>
 
 <script>
 
-const supabaseUrl = "https://fagjvpxjlwgnyzdsusmm.supabase.co"
-const supabaseKey = "sb_publishable_pAFXkmJb4hlNOCeADFVXWw_7_BHMDlk"
+let contador = 0;
 
-const supabase = supabase.createClient(supabaseUrl, supabaseKey)
-async function iniciar(id, minutos){
-
-let tempoFim = Date.now() + minutos * 60000
-
-await supabase
-.from("maquinas")
-.update({
-status:"ocupado",
-tempo_fim:tempoFim
-})
-.eq("nome",id)
-
-carregarMaquinas()
-location.reload()
-  }
-
-async function carregarMaquinas(){
-
-let { data } = await supabase
-.from("maquinas")
-.select("*")
-
-if(!data) return
-
-data.forEach(m => {
-
-let elemento = document.getElementById(m.nome)
-
-if(m.status == "ocupado"){
-
-let tempoRestante = Math.floor((m.tempo_fim - Date.now())/1000)
-
-if(tempoRestante > 0){
-
-let timer = setInterval(()=>{
-
-let mnt = Math.floor(tempoRestante/60)
-let seg = tempoRestante % 60
-
-elemento.innerHTML = "🔴 Ocupada - " + mnt + "m " + seg + "s"
-
-tempoRestante--
-
-if(tempoRestante <= 0){
-  clearInterval(timer)
-elemento.innerHTML = "🟢 Livre"
+function aumentar(){
+contador++;
+document.getElementById("contador").innerText = contador;
 }
 
-},1000)
-
-}
-
-}
-
-})
-
-}
-
-carregarMaquinas()
+setInterval(aumentar, 1000);
 
 </script>
 
