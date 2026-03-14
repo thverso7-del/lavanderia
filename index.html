@@ -9,16 +9,14 @@
 <style>
 
 body{
-font-family: Arial;
+font-family:Arial;
 margin:0;
 background:#f4f4f4;
 }
 
-/* TELAS */
-
 .tela{
 display:none;
-padding:25px;
+padding:20px;
 }
 
 .ativa{
@@ -54,26 +52,12 @@ font-weight:bold;
 
 .logo h1{
 color:#00a86b;
-margin-top:10px;
 }
-
-/* TEXTOS */
 
 .sub{
 text-align:center;
 color:#444;
 margin-bottom:40px;
-}
-
-.titulo{
-font-size:28px;
-font-weight:bold;
-margin-bottom:5px;
-}
-
-.subtitulo{
-color:#666;
-margin-bottom:25px;
 }
 
 /* BOTÕES */
@@ -105,7 +89,6 @@ border-radius:8px;
 border:1px solid #ccc;
 margin-top:8px;
 margin-bottom:15px;
-font-size:15px;
 }
 
 label{
@@ -113,35 +96,84 @@ font-weight:bold;
 }
 
 .voltar{
-font-size:20px;
+font-size:22px;
 cursor:pointer;
 margin-bottom:20px;
-display:inline-block;
 }
 
-/* TELA DAS MÁQUINAS */
+/* TOPO APP */
 
-.maquinas{
-display:grid;
-grid-template-columns:1fr 1fr 1fr 1fr;
-gap:15px;
-margin-top:30px;
+.topo{
+background:#0c8f4c;
+color:white;
+padding:20px;
+border-radius:0 0 20px 20px;
 }
 
-.maquina{
+.logo-topo{
 background:white;
+color:black;
+padding:10px;
 border-radius:10px;
-padding:15px;
 text-align:center;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+.info-topo{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.saldo{
+background:white;
+color:black;
+padding:8px 15px;
+border-radius:10px;
+font-weight:bold;
+}
+
+/* MAQUINAS */
+
+.conteudo{
+padding:20px;
+}
+
+.grid-maquinas{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-bottom:30px;
+}
+
+.maq{
+background:white;
+height:70px;
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
 box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
 
-.maquina img{
-width:60px;
+.maq img{
+width:45px;
 }
 
-.maquina p{
-margin:8px 0 0 0;
+/* MENU */
+
+.menu{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:12px 0;
+box-shadow:0 -2px 6px rgba(0,0,0,0.1);
+text-align:center;
 font-size:14px;
 }
 
@@ -158,8 +190,6 @@ t.classList.remove("ativa")
 document.getElementById(id).classList.add("ativa")
 
 }
-
-/* CADASTRO */
 
 function criarConta(){
 
@@ -178,12 +208,8 @@ mostrarTela("maquinas")
 
 }
 
-/* LOGIN */
-
 function entrar(){
-
 mostrarTela("maquinas")
-
 }
 
 </script>
@@ -219,29 +245,28 @@ Criar conta
 
 <div class="voltar" onclick="mostrarTela('inicio')">←</div>
 
-<div class="titulo">Vamos fazer seu cadastro</div>
-<div class="subtitulo">Preencha os dados abaixo</div>
+<h2>Vamos fazer seu cadastro</h2>
 
 <label>Nome</label>
 <input id="nome" type="text" placeholder="Ana">
 
 <label>Sobrenome</label>
-<input type="text" placeholder="Silva">
+<input type="text">
 
 <label>CPF</label>
-<input type="text" placeholder="000.000.000-00">
+<input type="text">
 
 <label>Data de nascimento</label>
-<input type="text" placeholder="01/01/2000">
+<input type="text">
 
 <label>CEP</label>
-<input type="text" placeholder="00000-000">
+<input type="text">
 
 <label>Email</label>
-<input id="email" type="email" placeholder="email@email.com">
+<input id="email" type="email">
 
 <label>Senha</label>
-<input id="senha" type="password" placeholder="******">
+<input id="senha" type="password">
 
 <button class="btn-primary" onclick="criarConta()">
 Criar conta
@@ -255,14 +280,13 @@ Criar conta
 
 <div class="voltar" onclick="mostrarTela('inicio')">←</div>
 
-<div class="titulo">Bem-vindo de volta!</div>
-<div class="subtitulo">Informe seu e-mail e senha</div>
+<h2>Bem-vindo de volta</h2>
 
 <label>Email</label>
-<input type="email" placeholder="seu@email.com">
+<input type="email">
 
 <label>Senha</label>
-<input type="password" placeholder="******">
+<input type="password">
 
 <button class="btn-primary" onclick="entrar()">
 Entrar
@@ -274,53 +298,63 @@ Entrar
 
 <div id="maquinas" class="tela">
 
-<h2>Escolha uma máquina</h2>
+<div class="topo">
 
-<div class="maquinas">
-
-<div class="maquina">
-<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
-<p>Máquina 1</p>
+<div class="logo-topo">
+🧼 Lavanderia Limpa+
 </div>
 
-<div class="maquina">
-<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
-<p>Máquina 2</p>
+<div class="info-topo">
+
+<div>
+<small>sexta-feira</small>
+<h2>Olá, Matheus</h2>
 </div>
 
-<div class="maquina">
-<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
-<p>Máquina 3</p>
+<div class="saldo">
+R$ 0,00
 </div>
 
-<div class="maquina">
-<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
-<p>Máquina 4</p>
 </div>
 
-<div class="maquina">
-<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
-<p>Máquina 5</p>
 </div>
 
-<div class="maquina">
-<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
-<p>Máquina 6</p>
+<div class="conteudo">
+
+<h3>Secadoras:</h3>
+
+<div class="grid-maquinas">
+
+<div class="maq"><img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png"></div>
+<div class="maq"><img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png"></div>
+<div class="maq"><img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png"></div>
+<div class="maq"><img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png"></div>
+
 </div>
 
-<div class="maquina">
-<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
-<p>Máquina 7</p>
+<h3>Lavadoras:</h3>
+
+<div class="grid-maquinas">
+
+<div class="maq"><img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png"></div>
+<div class="maq"><img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png"></div>
+<div class="maq"><img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png"></div>
+<div class="maq"><img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png"></div>
+
 </div>
 
-<div class="maquina">
-<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
-<p>Máquina 8</p>
 </div>
+
+<div class="menu">
+
+<div>🏠<br>Início</div>
+<div>💰<br>Carteira</div>
+<div>⏰<br>Horário</div>
+<div>☰<br>Menu</div>
 
 </div>
 
 </div>
 
 </body>
-  </html>
+</html>
