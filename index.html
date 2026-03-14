@@ -11,8 +11,10 @@
 body{
 font-family: Arial;
 margin:0;
-background:#f5f5f5;
+background:#f4f4f4;
 }
+
+/* TELAS */
 
 .tela{
 display:none;
@@ -22,6 +24,8 @@ padding:25px;
 .ativa{
 display:block;
 }
+
+/* LOGO */
 
 .logo{
 text-align:center;
@@ -53,11 +57,26 @@ color:#00a86b;
 margin-top:10px;
 }
 
+/* TEXTOS */
+
 .sub{
 text-align:center;
 color:#444;
 margin-bottom:40px;
 }
+
+.titulo{
+font-size:28px;
+font-weight:bold;
+margin-bottom:5px;
+}
+
+.subtitulo{
+color:#666;
+margin-bottom:25px;
+}
+
+/* BOTÕES */
 
 button{
 width:100%;
@@ -77,6 +96,8 @@ color:white;
 background:#eaeaea;
 }
 
+/* INPUTS */
+
 input{
 width:100%;
 padding:14px;
@@ -89,18 +110,6 @@ font-size:15px;
 
 label{
 font-weight:bold;
-color:#333;
-}
-
-.titulo{
-font-size:28px;
-font-weight:bold;
-margin-bottom:5px;
-}
-
-.subtitulo{
-color:#666;
-margin-bottom:25px;
 }
 
 .voltar{
@@ -108,6 +117,32 @@ font-size:20px;
 cursor:pointer;
 margin-bottom:20px;
 display:inline-block;
+}
+
+/* TELA DAS MÁQUINAS */
+
+.maquinas{
+display:grid;
+grid-template-columns:1fr 1fr 1fr 1fr;
+gap:15px;
+margin-top:30px;
+}
+
+.maquina{
+background:white;
+border-radius:10px;
+padding:15px;
+text-align:center;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.maquina img{
+width:60px;
+}
+
+.maquina p{
+margin:8px 0 0 0;
+font-size:14px;
 }
 
 </style>
@@ -121,6 +156,33 @@ t.classList.remove("ativa")
 })
 
 document.getElementById(id).classList.add("ativa")
+
+}
+
+/* CADASTRO */
+
+function criarConta(){
+
+let nome = document.getElementById("nome").value
+let email = document.getElementById("email").value
+let senha = document.getElementById("senha").value
+
+if(nome=="" || email=="" || senha==""){
+alert("Preencha todos os campos")
+return
+}
+
+alert("Conta criada com sucesso!")
+
+mostrarTela("maquinas")
+
+}
+
+/* LOGIN */
+
+function entrar(){
+
+mostrarTela("maquinas")
 
 }
 
@@ -151,22 +213,17 @@ Criar conta
 
 </div>
 
-
-
-<!-- TELA CADASTRO -->
+<!-- CADASTRO -->
 
 <div id="cadastro" class="tela">
 
 <div class="voltar" onclick="mostrarTela('inicio')">←</div>
 
 <div class="titulo">Vamos fazer seu cadastro</div>
-
-<div class="subtitulo">
-Preencha os dados abaixo para criar sua conta
-</div>
+<div class="subtitulo">Preencha os dados abaixo</div>
 
 <label>Nome</label>
-<input type="text" placeholder="Ana">
+<input id="nome" type="text" placeholder="Ana">
 
 <label>Sobrenome</label>
 <input type="text" placeholder="Silva">
@@ -181,47 +238,89 @@ Preencha os dados abaixo para criar sua conta
 <input type="text" placeholder="00000-000">
 
 <label>Email</label>
-<input type="email" placeholder="email@email.com">
+<input id="email" type="email" placeholder="email@email.com">
 
 <label>Senha</label>
-<input type="password" placeholder="******">
+<input id="senha" type="password" placeholder="******">
 
-<button class="btn-primary">
+<button class="btn-primary" onclick="criarConta()">
 Criar conta
 </button>
 
 </div>
 
-
-
-<!-- TELA LOGIN -->
+<!-- LOGIN -->
 
 <div id="login" class="tela">
 
 <div class="voltar" onclick="mostrarTela('inicio')">←</div>
 
 <div class="titulo">Bem-vindo de volta!</div>
+<div class="subtitulo">Informe seu e-mail e senha</div>
 
-<div class="subtitulo">
-Informe seu e-mail e senha para acessar sua conta
-</div>
-
-<label>Nome de usuário</label>
+<label>Email</label>
 <input type="email" placeholder="seu@email.com">
 
 <label>Senha</label>
 <input type="password" placeholder="******">
 
-<p style="font-size:14px;color:#666">
-Esqueceu sua senha?
-</p>
-
-<button class="btn-primary">
+<button class="btn-primary" onclick="entrar()">
 Entrar
 </button>
 
 </div>
 
+<!-- TELA OFICIAL -->
+
+<div id="maquinas" class="tela">
+
+<h2>Escolha uma máquina</h2>
+
+<div class="maquinas">
+
+<div class="maquina">
+<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
+<p>Máquina 1</p>
+</div>
+
+<div class="maquina">
+<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
+<p>Máquina 2</p>
+</div>
+
+<div class="maquina">
+<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
+<p>Máquina 3</p>
+</div>
+
+<div class="maquina">
+<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
+<p>Máquina 4</p>
+</div>
+
+<div class="maquina">
+<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
+<p>Máquina 5</p>
+</div>
+
+<div class="maquina">
+<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
+<p>Máquina 6</p>
+</div>
+
+<div class="maquina">
+<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
+<p>Máquina 7</p>
+</div>
+
+<div class="maquina">
+<img src="uma-maquina-de-lavar-branca-com-frente-e-traseira-preta-e-prateada_481747-98173.jpg">
+<p>Máquina 8</p>
+</div>
+
+</div>
+
+</div>
 
 </body>
-</html>
+  </html>
